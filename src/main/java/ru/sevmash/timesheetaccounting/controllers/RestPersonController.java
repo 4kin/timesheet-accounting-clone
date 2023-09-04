@@ -51,16 +51,13 @@ private final FakeDataProxy fakeDataProxy;
         return personService.restoreDeletedPerson(id);
     }
 
-
     @PostMapping("")
     @ToLog
     public PersonDto newPerson(@RequestBody PersonDto personDto) {
         return personService.addNewPerson(personDto);
     }
 
-
-
-    @GetMapping("/")
+    @PutMapping("")
     @ToLog
     public PersonDto updatePerson(@RequestBody PersonDto personDto) {
         return personService.updatePerson(personDto);
@@ -71,5 +68,4 @@ private final FakeDataProxy fakeDataProxy;
     public PersonEntity getRandomPerson() {
         return personService.addNewRandomPerson();
     }
-
 }

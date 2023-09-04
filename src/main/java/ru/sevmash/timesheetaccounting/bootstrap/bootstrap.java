@@ -47,7 +47,7 @@ public class bootstrap implements CommandLineRunner {
             loadPersonFormService();
         } catch (RuntimeException e) {
             logger.error("Сервис не доступен. Проверьте адресс " + environment.getProperty("name.service.url"));
-            logger.warn("Запустите модуль ta-microservice-fake-data");
+            logger.warn("Запустите ta-microservice-fake-data https://github.com/4kin/ta-microservice-fake-data.git");
         }
         logger.info("Итого людей " + personRepository.findAll().size());
         logger.info("Итого записей по времени " + timeSheetRepository.findAll().size());

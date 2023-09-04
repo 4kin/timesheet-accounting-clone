@@ -7,10 +7,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.web.server.ResponseStatusException;
 import ru.sevmash.timesheetaccounting.convertor.PersonConverter;
 import ru.sevmash.timesheetaccounting.domain.PersonDto;
 import ru.sevmash.timesheetaccounting.domain.PersonEntity;
+import ru.sevmash.timesheetaccounting.exception.PersonNotFound;
 import ru.sevmash.timesheetaccounting.repository.PersonRepository;
 
 import java.util.Optional;
@@ -57,8 +57,8 @@ class PersonServiceTest {
         given(personRepository.findById(1L)).willReturn(Optional.empty());
 
         assertThatThrownBy(() -> personService.getPersonById(1L))
-                .isInstanceOf(ResponseStatusException.class)
-                .hasMessageContaining("Not Found");
+                .isInstanceOf(PersonNotFound.class)
+                .hasMessageContaining("Персона не найдена с ID = 1");
     }
 
 
